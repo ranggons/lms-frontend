@@ -11,7 +11,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Template />}>
-						<Route path="dashboard" element={<Dashboard />} />
+						<Route path="/" element={<Dashboard />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
