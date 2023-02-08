@@ -6,16 +6,16 @@ export const GET = async (path, params) => {
     const getToken = localStorage.getItem("token");
     var header = {
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${getToken ? getToken : ""}`,
+        // Authorization: `Bearer ${getToken || ""}`,
         "Content-Type": "application/json",
-        "x-api-key": env.API_KEY,
+        // TODO: Remove later
+        'X-RapidAPI-Key': '1b8e0c91c6mshadb8a0762c738e6p10be95jsnc1365c6f498e',
+        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     };
+
     return new Promise((resolve, reject) => {
-        let url = path;
-        if (!url.toLowerCase().startsWith("http")) url = `${env.API_IHE}${path}`;
         axios
-            .get(url, {
-                // headers: getToken ? header : API_KEY_HEADER,
+            .get(path, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -35,15 +35,13 @@ export const POST = (path, payload, params) => {
     const getToken = localStorage.getItem("token");
     var header = {
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${getToken ? getToken : ""}`,
+        Authorization: `Bearer ${getToken || ""}`,
         "Content-Type": "application/json",
-        "x-api-key": env.API_KEY,
     };
+
     return new Promise((resolve, reject) => {
-        let url = path;
-        if (!url.toLowerCase().startsWith("http")) url = `${env.API_IHE}${path}`;
         axios
-            .post(url, payload, {
+            .post(path, payload, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -68,15 +66,13 @@ export const PUT = (path, payload, params) => {
     const getToken = localStorage.getItem("token");
     var header = {
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${getToken ? getToken : ""}`,
+        Authorization: `Bearer ${getToken || ""}`,
         "Content-Type": "application/json",
-        "x-api-key": env.API_KEY,
     };
+
     return new Promise((resolve, reject) => {
-        let url = path;
-        if (!url.toLowerCase().startsWith("http")) url = `${env.API_IHE}${path}`;
         axios
-            .put(url, payload, {
+            .put(path, payload, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -107,13 +103,12 @@ export const UPLOAD_FILE = async (payload) => {
         data.append("file", payload);
 
         axios
-            .post(`${env.API_SECURITY}/files`, data, {
+            .post(`${env.API}/files`, data, {
                 headers: {
                     Accept: "application/json",
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${getToken ? getToken : ""}`,
-                    "x-api-key": env.API_KEY,
+                    Authorization: `Bearer ${getToken || ""}`,
                 },
             })
             .then((response) => {
