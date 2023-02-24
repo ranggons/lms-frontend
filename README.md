@@ -1,3 +1,11 @@
+# Getting Started
+- Use Node JS v16.16.
+1. Fork this [Repository](https://github.com/ranggons/lms-frontend)
+2. Clone the repository
+3. Checkout to branch `development`
+4. ```npm install --legacy-peer-deps```
+5. Create new branch with `git switch -b "feature/*"` command
+
 # Documentation
 
 - [React Query](https://react-query-v3.tanstack.com/overview)
