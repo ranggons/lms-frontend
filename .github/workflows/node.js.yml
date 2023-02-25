@@ -29,9 +29,9 @@ jobs:
     - name: ssh deploy on aws ec2
       uses: easingthemes/ssh-deploy@v2.1.4
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
-        REMOTE_HOST: ${{ secrets.RANGON_HOST }}
-        REMOTE_USER: ${{ secrets.DEPLOY_USER }}
-        REMOTE_PORT: ${{ secrets.DEPLOY_PORT }}
+        SSH_PRIVATE_KEY: '${{ secrets.DEPLOY_KEY }}'
+        REMOTE_HOST: '${{ secrets.RANGON_HOST }}'
+        REMOTE_USER: '${{ secrets.DEPLOY_USER }}'
+        REMOTE_PORT: '${{ secrets.DEPLOY_PORT }}'
         SOURCE: "build/"
-        TARGET: ${{ secrets.DEPLOY_TARGET }}
+        TARGET: '${{ secrets.DEPLOY_TARGET }}'
