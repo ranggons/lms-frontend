@@ -10,7 +10,7 @@ on:
 jobs:
   build-and-deploy:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
@@ -26,12 +26,3 @@ jobs:
         cache: 'npm'
     - run: npm install --legacy-peer-deps
     - run: CI=false npm run build
-    - name: ssh deploy on aws ec2
-      uses: easingthemes/ssh-deploy@v2.1.4
-      env:
-        SSH_PRIVATE_KEY: '${{ secrets.DEPLOY_KEY }}'
-        REMOTE_HOST: '${{ secrets.RANGON_HOST }}'
-        REMOTE_USER: '${{ secrets.DEPLOY_USER }}'
-        REMOTE_PORT: '${{ secrets.DEPLOY_PORT }}'
-        SOURCE: "build/"
-        TARGET: '${{ secrets.DEPLOY_TARGET }}'
