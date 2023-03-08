@@ -56,4 +56,4 @@ jobs:
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         script: |
           sudo unzip -o /var/www/dev/frontend/main/temp/build.zip -d /var/www/dev/frontend/main/
-          sudo rm build.zip
+          sudo rm -rf build.zip
