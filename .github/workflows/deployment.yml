@@ -43,7 +43,7 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         source: build.zip
-        target: build.zip
+        target: /var/www/dev/frontend/main/temp/build.zip
         
     - name: Unzip build zip on EC2 instance
       uses: appleboy/ssh-action@master
@@ -52,4 +52,4 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         script: |
-          sudo unzip -o build.zip -d /var/www/dev/frontend/main/build
+          sudo unzip -o /var/www/dev/frontend/main/temp/build.zip -d /var/www/dev/frontend/main/build
