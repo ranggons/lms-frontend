@@ -26,14 +26,15 @@ jobs:
     - name: Zip build files
       run: zip -r build.zip build/
       
-    - name: Upload build zip to S3
+    - name: Install AWS CLI S3
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+    - name: Upload build zip to S3
       run: |
-        aws s3 cp build.zip s3://your-s3-bucket-name/build.zip
+        aws s3 cp build.zip s3://rangon/build.zip
         
     - name: Download build zip from S3 to EC2 instance
       uses: appleboy/scp-action@master
@@ -51,4 +52,4 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         script: |
-          sudo unzip -o build.zip -d /var/www/dev/frontend/main/dist
+          sudo unzip -o build.zip -d /var/www/dev/frontend/main/build
