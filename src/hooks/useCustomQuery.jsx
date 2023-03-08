@@ -6,7 +6,7 @@ export const useCustomQuery = ({
 	enabled = true,
 	keepPreviousData = false,
 	staleTime = 60 * 15 * 1000,
-	queryParams,
+	queryParams = {},
 }) => {
 	const { data, isFetching, isLoading, error } = useQuery({
 		queryKey: Array.isArray(queryKey) ? queryKey : [queryKey],

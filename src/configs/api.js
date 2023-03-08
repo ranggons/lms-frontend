@@ -8,9 +8,6 @@ export const GET = async (path, params) => {
         "Access-Control-Allow-Origin": "*",
         // Authorization: `Bearer ${getToken || ""}`,
         "Content-Type": "application/json",
-        // TODO: Remove later
-        'X-RapidAPI-Key': '1b8e0c91c6mshadb8a0762c738e6p10be95jsnc1365c6f498e',
-        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     };
 
     return new Promise((resolve, reject) => {
