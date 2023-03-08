@@ -3,7 +3,7 @@ name: Deploy React app to EC2 instance
 on:
   push:
     branches:
-      - dev-deployment
+      - development
 
 jobs:
   deploy:
