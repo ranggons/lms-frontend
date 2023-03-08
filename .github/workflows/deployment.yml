@@ -44,7 +44,10 @@ jobs:
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         source: build.zip
         target: /var/www/dev/frontend/main/temp/
-        
+    
+    - name: Remove old build files
+      run: rm -rf /var/www/dev/frontend/main/build/*
+
     - name: Unzip build zip on EC2 instance
       uses: appleboy/ssh-action@master
       with:
@@ -53,3 +56,4 @@ jobs:
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         script: |
           sudo unzip -o /var/www/dev/frontend/main/temp/build.zip -d /var/www/dev/frontend/main/
+          sudo rm build.zip
