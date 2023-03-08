@@ -16,6 +16,10 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
+
+    - name: Initialize environment
+      run: |
+        cp .env.development .env
         
     - name: Install dependencies
       run: npm install
