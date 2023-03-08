@@ -1,5 +1,14 @@
 import { GET } from "@configs/api";
+import env from "@configs/env";
+
+let baseURL = ""
+
+if (import.meta.env.MODE === "development") {
+    baseURL = env.API_DEV
+} else {
+    baseURL = env.API_PROD
+}
 
 export default {
-    get: () => GET(`https://imdb8.p.rapidapi.com/actors/get-all-videos`, { nconst: 'nm0001667', region: 'US' })
+    get: () => GET(`${baseURL}/api/test`)
 }
