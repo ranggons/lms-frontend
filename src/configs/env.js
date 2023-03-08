@@ -5,6 +5,7 @@ const env = {
     CALLBACK: import.meta.env.VITE_URL,
     API_PROD: import.meta.env.VITE_API_PROD,
     API_DEV: import.meta.env.VITE_API_DEV,
+    API_LOCAL: import.meta.env.VITE_API_LOCAL,
 };
 
 export default env;

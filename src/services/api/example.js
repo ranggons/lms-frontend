@@ -2,8 +2,11 @@ import { GET } from "@configs/api";
 import env from "@configs/env";
 
 let baseURL = ""
+let path = window.location.protocol + '//' + window.location.hostname;
 
-if (import.meta.env.MODE === "development") {
+if (path.includes("127")) {
+    baseURL = env.API_LOCAL
+} else if (path.includes("dev.rangon")) {
     baseURL = env.API_DEV
 } else {
     baseURL = env.API_PROD
