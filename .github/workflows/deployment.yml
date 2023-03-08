@@ -43,7 +43,7 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         source: build.zip
-        target: /var/www/dev/frontend/main/temp/build.zip
+        target: /var/www/dev/frontend/main/temp/
         
     - name: Unzip build zip on EC2 instance
       uses: appleboy/ssh-action@master
