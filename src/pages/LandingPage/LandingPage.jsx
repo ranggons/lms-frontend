@@ -1,3 +1,5 @@
+import { Button } from "@components/atoms";
+import { Navbar, Footer } from "@components/organism";
 import React from "react";
 
 import { Spinner } from "@components/moleculs";
@@ -18,3 +20,5 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+
