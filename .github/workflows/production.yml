@@ -3,7 +3,7 @@ name: Deploy React app to EC2 instance
 on:
   push:
     branches:
-      - development
+      - main
 
 jobs:
   deploy:
@@ -47,10 +47,10 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         source: build.zip
-        target: /var/www/dev/frontend/main/temp/
+        target: /var/www/prod/frontend/main/temp/
     
     - name: Remove old build files
-      run: rm -rf /var/www/dev/frontend/main/build/*
+      run: rm -rf /var/www/prod/frontend/main/build/*
 
     - name: Unzip build zip on EC2 instance
       uses: appleboy/ssh-action@master
@@ -59,5 +59,5 @@ jobs:
         username: ${{ secrets.EC2_INSTANCE_USERNAME }}
         key: ${{ secrets.EC2_INSTANCE_KEY }}
         script: |
-          sudo unzip -o /var/www/dev/frontend/main/temp/build.zip -d /var/www/dev/frontend/main/
+          sudo unzip -o /var/www/prod/frontend/main/temp/build.zip -d /var/www/prod/frontend/main/
           sudo rm -rf build.zip
