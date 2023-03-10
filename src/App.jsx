@@ -11,7 +11,13 @@ import LandingPage from "@pages/LandingPage/LandingPage";
 import Login from "@pages/Login/Login";
 import Example from "@pages/Example";
 
-import Content from "@pages/Content/Content";
+// Rangon
+import AdminRangon from "@pages/Admin/Admin";
+
+// School
+import Admin from "@pages/School/Admin/Admin";
+import Teacher from "@pages/School/Teacher/Teacher";
+import Student from "@pages/School/Student/Student";
 
 function App() {
 	return (
@@ -27,7 +33,12 @@ function App() {
 						<Route path="account" element={<DashboardAccount />} />
 					</Route>
 
-					<Route path="/contents/*" element={<Content />} />
+					<Route path="/rangon/*" element={<AdminRangon />} />
+
+					<Route path="/admins/*" element={<Admin />} />
+
+					<Route path="/teachers/*" element={<Teacher />} />
+					<Route path="/students/*" element={<Student />} />
 				</Routes>
 			</BrowserRouter>
 		</>
