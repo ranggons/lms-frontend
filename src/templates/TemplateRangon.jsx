@@ -1,3 +1,4 @@
+import { NavLinkCollapse } from "@components/moleculs";
 import React from "react";
 import { Outlet } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
@@ -6,15 +7,13 @@ import { MdOutlineSettings } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import { NavLinkCollapse } from "@components/moleculs";
+import { ROUTES_RANGON } from "@routes/routes";
 
-import { ROUTE_CONTENT } from "@routes/routes";
+import { useRangonSidebarStore } from "@stores/sidebar/rangonSidebar";
 
-import { useContentSidebarStore } from "@stores/content/contentSidebar";
-
-const TemplateContent = () => {
-	const isOpen = useContentSidebarStore((state) => state.isOpen);
-	const setIsOpen = useContentSidebarStore((state) => state.setIsOpen);
+const TemplateAdmin = () => {
+	const isOpen = useRangonSidebarStore((state) => state.isOpen);
+	const setIsOpen = useRangonSidebarStore((state) => state.setIsOpen);
 
 	return (
 		<div className="flex font-Poppins">
@@ -29,7 +28,7 @@ const TemplateContent = () => {
 						<NavLinkCollapse
 							Icon={MdOutlineSettings}
 							title="Manajemen"
-							child={ROUTE_CONTENT.filter((item) => item.isNavbar)}
+							child={ROUTES_RANGON.filter((item) => item.isNavbar)}
 						/>
 					</div>
 				</div>
@@ -58,14 +57,14 @@ const TemplateContent = () => {
 							<NavLinkCollapse
 								Icon={MdOutlineSettings}
 								title="Manajemen"
-								child={ROUTE_CONTENT.filter((item) => item.isNavbar)}
+								child={ROUTES_RANGON.filter((item) => item.isNavbar)}
 							/>
 						</div>
 					</div>
 				</div>
 			</>
 			<div className="flex-grow w-10/12 h-screen overflow-y-hidden">
-				<div className="flex flex-col w-full bg-white overflow-hidden h-full">
+				<div className="flex flex-col w-full bg-[#F6F8FD] overflow-hidden h-full">
 					<Outlet />
 				</div>
 				<ToastContainer
@@ -84,4 +83,4 @@ const TemplateContent = () => {
 	);
 };
 
-export default TemplateContent;
+export default TemplateAdmin;

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useContentSidebarStore = create((set) => ({
+export const useAdminSidebarStore = create((set) => ({
     isOpen: false,
     setIsOpen: (isOpen) => set({ isOpen }),
 }))
