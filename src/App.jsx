@@ -11,6 +11,8 @@ import LandingPage from "@pages/LandingPage/LandingPage";
 import Login from "@pages/Login/Login";
 import Example from "@pages/Example";
 
+import Content from "@pages/Content/Content";
+
 function App() {
 	return (
 		<>
@@ -24,6 +26,8 @@ function App() {
 						<Route index element={<DashboardAdmin />} />
 						<Route path="account" element={<DashboardAccount />} />
 					</Route>
+
+					<Route path="/contents/*" element={<Content />} />
 				</Routes>
 			</BrowserRouter>
 		</>
