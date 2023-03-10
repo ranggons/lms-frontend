@@ -15,7 +15,7 @@ const Pagination = ({
 	alignItemPaginator = "items-center",
 }) => {
 	return (
-		<div className="w-auto flex flex-row justify-between sm:gap-2 gap-2 mt-4 pb-2 font-Roboto-Condensed">
+		<div className="w-auto flex flex-row justify-between sm:gap-2 gap-2 mt-4 pb-2">
 			<div className={`flex ${flexDirection} items-start gap-2`}>
 				<span className="flex flex-row gap-1">
 					Show
