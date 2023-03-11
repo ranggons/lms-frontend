@@ -4,21 +4,21 @@ import PropTypes from "prop-types";
 const Button = ({
 	text,
 	type = "button",
-	background = "bg-blue-400",
+	background = "bg-primary-button",
 	textColor = "text-white",
-	size = "h-9 w-32",
+	size = "h-9 w-fit",
 	onClick,
 	isDisabled = false,
 	onRight = false,
 	leftIcon = false,
 	rightIcon = false,
-	rounded = "rounded-2xl",
+	rounded = "rounded-lg",
 	padding = "px-3",
 	additionalClass = "",
 }) => {
 	return (
 		<button
-			className={`${background} ${textColor} ${rounded} py-2 ${padding} flex flex-row gap-2 justify-center items-center shadow-[1px_1px_3px_1px_gray] ${size} ${
+			className={`${background} ${textColor} ${rounded} py-2 ${padding} flex flex-row gap-2 justify-center items-center ${size} ${
 				onRight ? "float-right" : ""
 			} ${additionalClass} ${isDisabled ? "cursor-not-allowed" : ""}`}
 			onClick={onClick}

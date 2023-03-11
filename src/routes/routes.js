@@ -1,3 +1,5 @@
+import { MdOutlineSettings } from "react-icons/md";
+
 // Rangon
 import Organization from "@pages/Admin/Organization/Organization";
 
@@ -15,11 +17,17 @@ export const ROUTES_DASHBOARD = [];
 
 export const ROUTES_RANGON = [
     {
-        title: "Organization",
-        path: "organization",
-        fullPath: "/rangon/organization",
-        Component: Organization,
-        isNavbar: true,
+        title: "Manajemen",
+        icon: MdOutlineSettings,
+        child: [
+            {
+                title: "Organisasi",
+                path: "organization",
+                fullPath: "/rangon/organization",
+                Component: Organization,
+                isNavbar: true,
+            },
+        ]
     },
 ];
 

@@ -6,7 +6,6 @@ import { FaTimes } from "react-icons/fa";
 const Modal = ({
 	title,
 	mergeClassTitle = "",
-	mergeClassPanel = "",
 	isOpen = false,
 	handleCloseModal,
 	size = "lg:w-1/3 w-2/4",
@@ -14,7 +13,7 @@ const Modal = ({
 }) => {
 	return (
 		<Dialog open={isOpen} onClose={handleCloseModal} className="relative z-50">
-			<div className="fixed inset-0 bg-black/90" aria-hidden="true" />
+			<div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
 			<div className="fixed inset-0">
 				<div className="flex min-h-full items-center justify-center p-4">
@@ -22,16 +21,16 @@ const Modal = ({
 						className={`${size} mx-auto min-h-min max-h-[80vh] overflow-y-auto rounded-lg bg-white custom-scrollbar`}
 					>
 						<Dialog.Title
-							className={`${mergeClassTitle} flex flex-row top-0 justify-between items-center bg-primary-400 border-b-2 rounded-t-lg border-black p-3 px-8 text-black`}
+							className={`${mergeClassTitle} flex flex-row top-0 justify-between items-center border-b-2 rounded-t-lg border-general-100 p-3 px-8 text-black`}
 						>
-							<span className="font-semibold text-lg">{title}</span>
+							<span className="font-semibold text-lg text-primary-button">
+								{title}
+							</span>
 							<button onClick={handleCloseModal}>
 								<FaTimes />
 							</button>
 						</Dialog.Title>
-						<div
-							className={`flex flex-col justify-center ${mergeClassPanel} p-3`}
-						>
+						<div className={`flex flex-col justify-center mx-4 p-3`}>
 							{children}
 						</div>
 					</Dialog.Panel>
@@ -44,7 +43,6 @@ const Modal = ({
 Modal.propTypes = {
 	title: PropTypes.string.isRequired,
 	mergeClassTitle: PropTypes.string,
-	mergeClassPanel: PropTypes.string,
 	isOpen: PropTypes.bool,
 	handleCloseModal: PropTypes.func,
 	size: PropTypes.string,
