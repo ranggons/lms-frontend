@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
-import { MdOutlineSettings } from "react-icons/md";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+
+import Logo from "@assets/images/Logo.png";
 
 import { NavLinkCollapse } from "@components/moleculs";
 
@@ -22,15 +23,22 @@ const TemplateTeacher = () => {
 				<div
 					className={`flex-shrink-0 h-screen lg:block hidden top-0 left-0 bg-white overflow-y-scroll scrollbar-hide ease-linear duration-200 lg:w-1/6 w-1/12 items-center translate-x-0`}
 				>
-					<div className={`flex flex-col gap-1 pb-2`}>
+					<div className={`flex flex-col pb-2`}>
 						<div
-							className={`flex flex-row items-center lg:justify-start justify-center mx-4 my-4`}
-						></div>
-						<NavLinkCollapse
-							Icon={MdOutlineSettings}
-							title="Manajemen"
-							child={ROUTES_TEACHER.filter((item) => item.isNavbar)}
-						/>
+							className={`flex flex-row items-center justify-center mx-4 mt-4 pb-4 border-b-2 border-general-100`}
+						>
+							<img alt="Logo Sekolah" src={Logo} className="w-16 h-16" />
+						</div>
+						{ROUTES_TEACHER.map(({ title, icon, child }, key) =>
+							child.length ? (
+								<NavLinkCollapse
+									Icon={icon}
+									title={title}
+									child={child.filter((item) => item.isNavbar)}
+									key={key}
+								/>
+							) : null,
+						)}
 					</div>
 				</div>
 
@@ -43,24 +51,30 @@ const TemplateTeacher = () => {
 				>
 					<div className={`flex flex-col`}>
 						<div
-							className={`flex flex-row items-center ${
+							className={`flex flex-row items-start ${
 								isOpen ? "justify-between" : ""
-							} mx-4 my-4`}
+							} mx-4 border-b-2 border-general-100 py-4`}
 						>
+							<div className="flex justify-center flex-grow">
+								<img alt="Logo Sekolah" src={Logo} className="w-16 h-16" />
+							</div>
 							<button
 								onClick={() => setIsOpen(!isOpen)}
-								className="lg:hidden block text-white"
+								className="lg:hidden block text-dark hover:text-gray-300"
 							>
 								<FaAlignJustify />
 							</button>
 						</div>
-						<div className="md:px-3 px-2">
-							<NavLinkCollapse
-								Icon={MdOutlineSettings}
-								title="Manajemen"
-								child={ROUTES_TEACHER.filter((item) => item.isNavbar)}
-							/>
-						</div>
+						{ROUTES_TEACHER.map(({ title, icon, child }, key) =>
+							child.length ? (
+								<NavLinkCollapse
+									Icon={icon}
+									title={title}
+									child={child.filter((item) => item.isNavbar)}
+									key={key}
+								/>
+							) : null,
+						)}
 					</div>
 				</div>
 			</>

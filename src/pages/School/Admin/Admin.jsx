@@ -14,8 +14,9 @@ const Admin = () => {
 		<>
 			<Routes>
 				<Route element={<TemplateAdmin />}>
-					{ROUTES_ADMIN.map(
-						({ path, Component, title, titleParent = "" }, key) => (
+					{ROUTES_ADMIN.map((item) => item.child)
+						.flat()
+						.map(({ path, Component, title, titleParent = "" }, key) => (
 							<Route
 								key={key}
 								path={path}
@@ -30,8 +31,7 @@ const Admin = () => {
 									</>
 								}
 							/>
-						),
-					)}
+						))}
 				</Route>
 			</Routes>
 		</>

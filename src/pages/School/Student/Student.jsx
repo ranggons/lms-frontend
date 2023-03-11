@@ -14,8 +14,9 @@ const Student = () => {
 		<>
 			<Routes>
 				<Route element={<TemplateStudent />}>
-					{ROUTES_STUDENT.map(
-						({ path, Component, title, titleParent = "" }, key) => (
+					{ROUTES_STUDENT.map((item) => item.child)
+						.flat()
+						.map(({ path, Component, title, titleParent = "" }, key) => (
 							<Route
 								key={key}
 								path={path}
@@ -30,8 +31,7 @@ const Student = () => {
 									</>
 								}
 							/>
-						),
-					)}
+						))}
 				</Route>
 			</Routes>
 		</>
