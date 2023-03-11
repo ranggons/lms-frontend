@@ -4,6 +4,7 @@ import { MdOutlineSettings } from "react-icons/md";
 import Organization from "@pages/Admin/Organization/Organization";
 
 // Admin
+import Class from "@pages/School/Admin/Class/Class";
 import Teacher from "@pages/School/Admin/Teacher/Teacher";
 
 // Teacher
@@ -41,6 +42,13 @@ export const ROUTES_ADMIN = [
 				path: "teacher",
 				fullPath: "/admins/teacher",
 				Component: Teacher,
+				isNavbar: true,
+			},
+			{
+				title: "Kelas",
+				path: "classes",
+				fullPath: "/admins/classes",
+				Component: Class,
 				isNavbar: true,
 			},
 		],

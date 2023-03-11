@@ -18,14 +18,14 @@ import { useUpdateData } from "@hooks/useUpdateData";
 
 import CheckAuthorization from "@pages/Auth/CheckAuthorization";
 
-import TeacherService from "@services/api/school/admin/TeacherService";
+import ClassService from "@services/api/school/admin/ClassService";
 import { getPaginationPage } from "@services/helper";
 
 import { MODAL_STATUS } from "@utils/constant";
 
 const columnHelper = createColumnHelper();
 
-const Teacher = () => {
+const Class = () => {
 	const [search, setSearch] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
 
@@ -51,8 +51,8 @@ const Teacher = () => {
 							/>
 						),
 					}),
-					columnHelper.accessor("nip", {
-						header: <TableHeader value={"NIP"} />,
+					columnHelper.accessor("teacher", {
+						header: <TableHeader value={"Wali Kelas"} />,
 						cell: (info) => (
 							<TableCell
 								value={info.getValue()}
@@ -79,8 +79,8 @@ const Teacher = () => {
 
 	const { data, isFetching, isLoading, pagination, setPagination, error } =
 		useQueryTable({
-			getAll: TeacherService.get,
-			queryKey: "teacher",
+			getAll: ClassService.get,
+			queryKey: "class",
 			queryParams: { search: searchQuery },
 		});
 
@@ -92,7 +92,7 @@ const Teacher = () => {
 
 	const onClickEdit = (data) => {
 		setModalState({
-			title: "Ubah Guru",
+			title: "Ubah Kelas",
 			status: MODAL_STATUS.UPDATE,
 			isOpen: true,
 			data,
@@ -101,7 +101,7 @@ const Teacher = () => {
 
 	const onClickDelete = (data) => {
 		setModalState({
-			title: "Hapus Guru",
+			title: "Hapus Kelas",
 			status: MODAL_STATUS.DELETE,
 			isOpen: true,
 			data,
@@ -110,15 +110,15 @@ const Teacher = () => {
 
 	const { registerCreate, onSubmitCreate, handleSubmitCreate, errorsCreate } =
 		useCreateData({
-			invalidateQueries: ["teacher"],
-			api: TeacherService.create,
+			invalidateQueries: ["class"],
+			api: ClassService.create,
 			handleCloseModal,
 		});
 
 	const { registerUpdate, onSubmitUpdate, handleSubmitUpdate, errorsUpdate } =
 		useUpdateData({
-			invalidateQueries: ["teacher"],
-			api: TeacherService.update,
+			invalidateQueries: ["class"],
+			api: ClassService.update,
 			handleCloseModal: handleCloseModal,
 			defaultValues: modalState.data,
 		});
@@ -134,7 +134,7 @@ const Teacher = () => {
 			)}
 		>
 			<Input
-				title="Nama Guru"
+				title="Nama Kelas"
 				{...registerCreate("name")}
 				error={errorsCreate.name}
 			/>
@@ -154,7 +154,7 @@ const Teacher = () => {
 			)}
 		>
 			<Input
-				title="Nama Guru"
+				title="Nama Kelas"
 				{...registerUpdate("name")}
 				error={errorsUpdate.name}
 			/>
@@ -169,7 +169,7 @@ const Teacher = () => {
 
 	const deleteFormTeacher = (
 		<div className="flex flex-col gap-3">
-			<p>Hapus Guru {modalState.data.name}?</p>
+			<p>Hapus Kelas {modalState.data.name}?</p>
 			<div className="flex flex-row gap-4">
 				<Button
 					onClick={handleCloseModal}
@@ -207,7 +207,7 @@ const Teacher = () => {
 				<div className="flex md:flex-row flex-col gap-2 md:items-center items-start">
 					<div className="w-3/3 flex justify-end items-center relative">
 						<input
-							placeholder="Cari Guru..."
+							placeholder="Cari Kelas..."
 							className="border border-primary-600 rounded-md p-1 px-5 pl-10 focus:outline-none focus:border-primary-300 focus:ring-1 focus:ring-primary-600"
 							onChange={(e) => setSearch(e.target.value)}
 							value={search}
@@ -224,12 +224,12 @@ const Teacher = () => {
 					/>
 				</div>
 				<Button
-					text="Tambah Guru"
+					text="Tambah Kelas"
 					additionalClass="text-sm text-red hover:bg-primary-500"
 					leftIcon={<MdAdd className="text-lg h-6 w-6" />}
 					onClick={() =>
 						handleOpenModal({
-							title: "Tambah Guru",
+							title: "Tambah Kelas",
 							status: MODAL_STATUS.CREATE,
 						})
 					}
@@ -260,6 +260,6 @@ const Teacher = () => {
 };
 
 export default CheckAuthorization({
-	Component: Teacher,
+	Component: Class,
 	menu: ["admin"],
 });
