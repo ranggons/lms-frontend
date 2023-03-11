@@ -9,6 +9,7 @@ module.exports = {
                     300: "#FF5B6C",
                     500: "#E21D26",
                     700: "#9D0007",
+                    "button": "#FF4048"
                 },
                 general: {
                     100: "#E6E7EB",

@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
+  .round-table table th:first-child{
+    border-radius:10px 0 0 0px;
+  }
+  
+  .round-table table th:last-child{
+    border-radius:0 10px 0px 0;
+  }
+  
   .loader {
-    border-top-color: #f0c760;
+    border-top-color: #FF5B6C;
     -webkit-animation: spinner 1.5s linear infinite;
     animation: spinner 1.5s linear infinite;
   }

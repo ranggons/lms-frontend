@@ -1,6 +1,8 @@
-import axios from "@libs/axios";
-import env from "@configs/env";
 import _ from "lodash";
+
+import env from "@configs/env";
+import axios from "@libs/axios";
+import { baseUrl } from "@services/helper";
 
 export const GET = async (path, params) => {
     const getToken = localStorage.getItem("token");
@@ -10,9 +12,11 @@ export const GET = async (path, params) => {
         "Content-Type": "application/json",
     };
 
+    let url = `${baseUrl()}/${path}`;
+
     return new Promise((resolve, reject) => {
         axios
-            .get(path, {
+            .get(url, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -36,9 +40,11 @@ export const POST = (path, payload, params) => {
         "Content-Type": "application/json",
     };
 
+    let url = `${baseUrl()}/${path}`;
+
     return new Promise((resolve, reject) => {
         axios
-            .post(path, payload, {
+            .post(url, payload, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -59,7 +65,7 @@ export const POST = (path, payload, params) => {
     });
 };
 
-export const PUT = (path, payload, params) => {
+export const PATCH = (path, payload, params) => {
     const getToken = localStorage.getItem("token");
     var header = {
         "Access-Control-Allow-Origin": "*",
@@ -67,9 +73,11 @@ export const PUT = (path, payload, params) => {
         "Content-Type": "application/json",
     };
 
+    let url = `${baseUrl()}/${path}`;
+
     return new Promise((resolve, reject) => {
         axios
-            .put(path, payload, {
+            .patch(url, payload, {
                 headers: header,
                 params: _.isObject(params) ? params : undefined,
             })
@@ -115,6 +123,41 @@ export const UPLOAD_FILE = async (payload) => {
                 } else {
                     var _err = { message: data.status.message };
                     return reject(_err);
+                }
+            })
+            .catch((err) => {
+                const error = err.response
+                    ? err.response.data.message
+                    : JSON.parse(JSON.stringify(err));
+                return reject(error);
+            });
+    });
+};
+
+export const DELETE = (path, payload = {}, params = {}) => {
+    const getToken = localStorage.getItem("token");
+    var header = {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${getToken ? getToken : ""}`,
+        "Content-Type": "application/json",
+        "x-api-key": env.API_KEY,
+    };
+
+    let url = `${baseUrl()}/${path}`;
+
+    return new Promise((resolve, reject) => {
+        axios
+            .delete(url, {
+                headers: header,
+                data: payload,
+                params: _.isObject(params) ? params : undefined,
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    return resolve(response);
+                } else {
+                    const err = response.status;
+                    return reject(err);
                 }
             })
             .catch((err) => {

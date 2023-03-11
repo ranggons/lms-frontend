@@ -25,11 +25,16 @@ const TemplateAdmin = () => {
 						<div
 							className={`flex flex-row items-center lg:justify-start justify-center mx-4 my-4`}
 						></div>
-						<NavLinkCollapse
-							Icon={MdOutlineSettings}
-							title="Manajemen"
-							child={ROUTES_RANGON.filter((item) => item.isNavbar)}
-						/>
+						{ROUTES_RANGON.map(({ title, icon, child }, key) =>
+							child.length ? (
+								<NavLinkCollapse
+									Icon={icon}
+									title={title}
+									child={child.filter((item) => item.isNavbar)}
+									key={key}
+								/>
+							) : null,
+						)}
 					</div>
 				</div>
 

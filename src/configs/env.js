@@ -6,6 +6,7 @@ const env = {
     API_PROD: import.meta.env.VITE_API_PROD,
     API_DEV: import.meta.env.VITE_API_DEV,
     API_LOCAL: import.meta.env.VITE_API_LOCAL,
+    API_VERSION: import.meta.env.VITE_API_VERSION
 };
 
 export default env;
