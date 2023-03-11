@@ -16,54 +16,72 @@ import CalendarStudent from "@pages/School/Student/Calendar/Calendar";
 export const ROUTES_DASHBOARD = [];
 
 export const ROUTES_RANGON = [
-    {
-        title: "Manajemen",
-        icon: MdOutlineSettings,
-        child: [
-            {
-                title: "Organisasi",
-                path: "organization",
-                fullPath: "/rangon/organization",
-                Component: Organization,
-                isNavbar: true,
-            },
-        ]
-    },
+	{
+		title: "Manajemen",
+		icon: MdOutlineSettings,
+		child: [
+			{
+				title: "Organisasi",
+				path: "organization",
+				fullPath: "/rangon/organization",
+				Component: Organization,
+				isNavbar: true,
+			},
+		],
+	},
 ];
 
 export const ROUTES_ADMIN = [
-    {
-        title: "Guru",
-        path: "teacher",
-        fullPath: "/admins/teacher",
-        Component: Teacher,
-        isNavbar: true,
-    },
+	{
+		title: "Manajemen",
+		icon: MdOutlineSettings,
+		child: [
+			{
+				title: "Guru",
+				path: "teacher",
+				fullPath: "/admins/teacher",
+				Component: Teacher,
+				isNavbar: true,
+			},
+		],
+	},
 ];
 
 export const ROUTES_TEACHER = [
-    {
-        title: "Kalender",
-        path: "calendar",
-        fullPath: "/teachers/calendar",
-        Component: CalendarTeacher,
-        isNavbar: true,
-    },
-    {
-        title: "Konten Anda",
-        path: "question",
-        fullPath: "/teachers/question",
-        Component: Question,
-        isNavbar: true,
-    },
-]
+	{
+		title: "Manajemen",
+		icon: MdOutlineSettings,
+		child: [
+			{
+				title: "Kalender",
+				path: "calendar",
+				fullPath: "/teachers/calendar",
+				Component: CalendarTeacher,
+				isNavbar: true,
+			},
+			{
+				title: "Konten Anda",
+				path: "question",
+				fullPath: "/teachers/question",
+				Component: Question,
+				isNavbar: true,
+			},
+		],
+	},
+];
 
 export const ROUTES_STUDENT = [
-    {
-        title: "Kalender",
-        path: "calendar",
-        fullPath: "/students/calendar",
-        Component: CalendarStudent,
-        isNavbar: true,
-    },
-]
+	{
+		title: "Manajemen",
+		icon: MdOutlineSettings,
+		child: [
+			{
+				title: "Kalender",
+				path: "calendar",
+				fullPath: "/students/calendar",
+				Component: CalendarStudent,
+				isNavbar: true,
+			},
+		],
+	},
+];

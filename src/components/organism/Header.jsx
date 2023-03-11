@@ -17,9 +17,9 @@ const Header = ({ titleParent = "", title = "", useSidebar }) => {
 						onClick={() => setIsOpen(!isOpen)}
 						className="lg:hidden block"
 					>
-						<FaAlignJustify className="text-white hover:text-gray-600" />
+						<FaAlignJustify className="text-dark hover:text-gray-300" />
 					</button>
-					<h1 className="font-bold lg:text-xl text-md lg:ml-2 text-white tracking-wide">
+					<h1 className="font-bold lg:text-xl text-md lg:ml-2 text-dark tracking-wide">
 						{title}
 					</h1>
 				</span>

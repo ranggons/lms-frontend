@@ -15,7 +15,7 @@ const NavLinkCollapse = ({ title, Icon, child }) => {
 			{({ open }) => (
 				<>
 					<Disclosure.Button
-						className={`flex w-full justify-between items-center rounded-lg pr-2 text-left text-sm font-medium hover:bg-primary-100 focus:outline-none
+						className={`flex w-full justify-between items-center pr-2 text-left text-sm font-medium hover:bg-primary-100 focus:outline-none
           ${open ? "" : ""}
           `}
 					>

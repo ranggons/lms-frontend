@@ -11,6 +11,16 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint"
+    ],
+    "*.jsx": [
+      "prettier --write",
+      "eslint"
+    ]
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.8",
     "@hookform/resolvers": "^2.9.10",
