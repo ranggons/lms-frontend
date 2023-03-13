@@ -95,7 +95,7 @@ const Table = ({
 			</div>
 			{/* Pagination */}
 			{isUsePagination && total > 0 ? (
-				<div className="w-auto flex flex-row justify-between mt-4 mx-12 pb-2">
+				<div className="w-auto flex flex-row justify-between mt-4 pb-2">
 					<div className="flex md:flex-row flex-col md:items-center items-start gap-2">
 						<span className="flex gap-2">
 							Show
