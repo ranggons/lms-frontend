@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { MdAdd, MdSearch } from "react-icons/md";
 import { createColumnHelper } from "@tanstack/react-table";
+import { isNil, omitBy } from "lodash";
 
 import {
 	Button,
@@ -13,6 +14,7 @@ import { Spinner } from "@components/moleculs";
 import { Modal, Table } from "@components/organism";
 
 import { useCreateData } from "@hooks/useCreateData";
+import { useDeleteData } from "@hooks/useDeleteData";
 import { useQueryTable } from "@hooks/useQueryTable";
 import { useUpdateData } from "@hooks/useUpdateData";
 
@@ -92,7 +94,7 @@ const Organization = () => {
 
 	const onClickEdit = (data) => {
 		setModalState({
-			title: "Edit User",
+			title: "Ubah Organisasi",
 			status: MODAL_STATUS.UPDATE,
 			isOpen: true,
 			data,
@@ -101,7 +103,7 @@ const Organization = () => {
 
 	const onClickDelete = (data) => {
 		setModalState({
-			title: "Delete User",
+			title: "Hapus Organisasi",
 			status: MODAL_STATUS.DELETE,
 			isOpen: true,
 			data,
@@ -123,8 +125,14 @@ const Organization = () => {
 			defaultValues: modalState.data,
 		});
 
+	const { onSubmitDelete } = useDeleteData({
+		invalidateQueries: ["organizations"],
+		api: OrganizationService.delete,
+		handleCloseModal: handleCloseModal,
+	});
+
 	const transformData = (data, e, onSubmit) => {
-		onSubmit(...data, e);
+		onSubmit(omitBy(data, isNil), e);
 	};
 
 	const createFormOrganization = (
@@ -159,7 +167,7 @@ const Organization = () => {
 				error={errorsUpdate.name}
 			/>
 			<Button
-				text="Save User"
+				text="Submit"
 				type="submit"
 				additionalClass="text-sm mt-4 text-red hover:bg-primary-500"
 				onRight={true}
