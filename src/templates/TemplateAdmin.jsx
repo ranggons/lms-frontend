@@ -2,9 +2,6 @@ import React from "react";
 import { Outlet } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-
 import Logo from "@assets/images/Logo.png";
 
 import { NavLinkCollapse } from "@components/moleculs";
@@ -82,17 +79,6 @@ const TemplateStudent = () => {
 				<div className="flex flex-col w-full bg-[#F6F8FD] overflow-hidden h-full">
 					<Outlet />
 				</div>
-				<ToastContainer
-					position="top-right"
-					autoClose={2000}
-					newestOnTop
-					hideProgressBar
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss={false}
-					draggable
-					theme="colored"
-				/>
 			</div>
 		</div>
 	);

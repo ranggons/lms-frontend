@@ -5,9 +5,14 @@ import { FaAlignJustify, FaAngleDown } from "react-icons/fa";
 import InitialsAvatar from "react-initials-avatar";
 import "react-initials-avatar/lib/ReactInitialsAvatar.css";
 
+import { logout } from "@services/functions/Auth";
+
+import { useAuthStore } from "@stores/authStore";
+
 const Header = ({ titleParent = "", title = "", useSidebar }) => {
 	const isOpen = useSidebar((state) => state.isOpen);
 	const setIsOpen = useSidebar((state) => state.setIsOpen);
+	const user = useAuthStore((state) => state.user);
 
 	return (
 		<>
@@ -29,7 +34,7 @@ const Header = ({ titleParent = "", title = "", useSidebar }) => {
 						className={`flex items-center justify-center w-12 h-12 rounded-full text-center border-4 border-general-300 bg-white`}
 					>
 						<InitialsAvatar
-							name={"Muhammad Ikhbal"}
+							name={localStorage.getItem("name")}
 							className="bg-transparent text-general-700"
 						/>
 					</div>
@@ -59,6 +64,7 @@ const Header = ({ titleParent = "", title = "", useSidebar }) => {
 												className={`${
 													active ? "bg-primary-500 text-white" : "text-gray-900"
 												} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+												onClick={logout}
 											>
 												Logout
 											</button>
