@@ -28,7 +28,7 @@ const Input = forwardRef(
 					{...props}
 					type={type}
 					ref={ref}
-					className={`border border-primary-600 rounded-2xl p-1 px-4 focus:outline-none focus:border-primary-300 focus:ring-1 focus:ring-primary-600
+					className={`border border-primary-500 rounded-md p-1 px-4 focus:outline-none focus:border-primary-300 focus:ring-1 focus:ring-primary-300
 						${className}`}
 					placeholder={placeholder || title}
 				/>

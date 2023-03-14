@@ -10,6 +10,8 @@ export const useCreateData = ({
 	defaultValues = {},
 	resolver,
 	onSuccessMessage = "Success Create Data",
+	onSuccess = null,
+	toastSuccess = true,
 }) => {
 	const {
 		register,
@@ -36,13 +38,14 @@ export const useCreateData = ({
 
 	const mutation = useMutation({
 		mutationFn: async (data) => await api({ data }),
-		onSuccess: () => {
+		onSuccess: (data) => {
 			invalidateQueries?.map((key) =>
 				queryClient.invalidateQueries({ queryKey: [key] }),
 			);
 			reset();
 			handleCloseModal && handleCloseModal();
-			toast.success(onSuccessMessage);
+			onSuccess && onSuccess(data);
+			toastSuccess && toast.success(onSuccessMessage);
 		},
 		onError: (err) => toast.error(err.message),
 	});

@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 const Template = () => {
 	return (
@@ -9,17 +8,6 @@ const Template = () => {
 				<div className="flex flex-col w-full overflow-hidden h-full pb-2">
 					<Outlet />
 				</div>
-				<ToastContainer
-					position="top-right"
-					autoClose={2000}
-					newestOnTop
-					hideProgressBar
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss={false}
-					draggable
-					theme="colored"
-				/>
 			</div>
 		</>
 	);

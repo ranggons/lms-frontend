@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Button = ({
 	text,
 	type = "button",
-	background = "bg-primary-button",
+	background = "bg-primary-button hover:bg-primary-500",
 	textColor = "text-white",
 	size = "h-9 w-fit",
 	onClick,

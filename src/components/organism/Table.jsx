@@ -47,7 +47,7 @@ const Table = ({
 				className={`mt-2 overflow-auto custom-scrollbar round-table shadow-md ${mergeClass}`}
 			>
 				<table className="border-collapse w-full custom-scrollbar">
-					<thead className={`sticky top-0`}>
+					<thead className={`sticky top-0 bg-slate-100`}>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<tr key={headerGroup.id}>
 								{headerGroup.headers.map((header) => (
